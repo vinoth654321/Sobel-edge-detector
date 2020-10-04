@@ -4,26 +4,25 @@ import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
 
-# Open the image
+
 img = np.array(Image.open('flower.png')).astype(np.uint8)
 
-# Apply gray scale
+
 gray_img = np.round(0.299 * img[:, :, 0] +
                     0.587 * img[:, :, 1] +
                     0.114 * img[:, :, 2]).astype(np.uint8)
 
-# Sobel Operator
+
 h, w = gray_img.shape
-# define filters
+
 horizontal = np.array([[-1, -2, -1], [0, 0, 0], [1, 2, 1]])  # s2
 vertical = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]])  # s1
 
-# define images with 0s
 newhorizontalImage = np.zeros((h, w))
 newverticalImage = np.zeros((h, w))
 newgradientImage = np.zeros((h, w))
 
-# offset by 1
+
 for i in range(1, h - 1):
     for j in range(1, w - 1):
         horizontalGrad = (horizontal[0, 0] * gray_img[i - 1, j - 1]) + \
