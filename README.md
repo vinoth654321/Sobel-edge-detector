@@ -48,8 +48,6 @@ for i in range(1, h - 1):
                        (vertical[2, 2] * gray_img[i + 1, j + 1])
 
         newverticalImage[i - 1, j - 1] = abs(verticalGrad)
-
-        # Edge Magnitude
         mag = np.sqrt(pow(horizontalGrad, 2.0) + pow(verticalGrad, 2.0))
         newgradientImage[i - 1, j - 1] = mag
 
